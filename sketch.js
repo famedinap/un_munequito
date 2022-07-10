@@ -2,17 +2,20 @@ var tamano=200
 let fondo;
 let slider;
 let muñequito;
+let muñequito100;
 let val=0
 let e=0
 let inp
 let mnsg=''
 let bolAux=true
 function setup() {
-  createCanvas(500, 500);
+  createCanvas(350, 260);
+  background(5,150,160)
   colorMode(RGB,1)
   //frameRate(100)
   fondo = loadImage('fondo.jpg');
   muñequito = loadImage('muñequito.png');
+  muñequito100 = loadImage('1001.gif');
   slider = createSlider(0, 100, val)
   slider.position(5, 230);
   slider.style('width', '300px');
@@ -51,17 +54,20 @@ function draw() {
   fill(255,255,255);
   rect(308,232,30,15)
   fill(0,0,0);
-  text(val,310,243);
+  text(val+'🎓',310,243);
   console.log('val: ', val,' e: ', e);
   if(e!=val){
     push();
-    frameRate(10)
+    frameRate(15)
     caminar(e,val)
     pop();
   }
   e= val;
   if (bolAux){
-  muñequitor(val);}
+    if(val==100){
+      muñequitofin(val,muñequito100);
+    }else{
+  muñequitor(val,muñequito);}}
 
 }
 async function caminar(ant,des){
@@ -69,14 +75,14 @@ async function caminar(ant,des){
   if(des>ant){
   for (let i = ant; i < des+1; i++){
     console.log('ant: ', ant,' des: ', des,' i: ', i,' y ',1);
-    muñequitor(i);
-    await sleep(50)
+    muñequitor(i,muñequito);
+    await sleep(30)
   }}
   else{
-    for (let j = des; j > ant-1; j--){
+    for (let j = ant; j > des-1; j--){
       console.log('ant: ', ant,' des: ', des,' j: ', j,' y ',2);
-      muñequitor(j);
-      await sleep(100)
+      muñequitor(j,muñequito);
+      await sleep(30)
     }}
   bolAux=true
 }
@@ -111,11 +117,15 @@ function camino(){
   line(326, 77, 340, 73);
   pop();
 }
-
-function muñequitor(pos){
+function muñequitofin(pos,img){
   x=(pos*326)/100
   y=calcularY(x);
-  image(muñequito, x, y,20,20);
+  image(img, x-20, y-28,50,50);
+}
+function muñequitor(pos,img){
+  x=(pos*326)/100
+  y=calcularY(x);
+  image(img, x, y,20,20);
 }
 function calcularY(x){
   if(x<=82){
@@ -149,5 +159,6 @@ function calcularY(x){
     return 84-y
   }
   return 54;
+  
 }
 
