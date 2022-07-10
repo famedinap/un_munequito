@@ -8,9 +8,10 @@ let e=0
 let inp
 let mnsg=''
 let bolAux=true
+let som = false
 function setup() {
   createCanvas(350, 260);
-  background(5,150,160)
+  background(131, 242, 168)
   colorMode(RGB,1)
   //frameRate(100)
   fondo = loadImage('fondo.jpg');
@@ -46,6 +47,12 @@ function myInputEvent() {
 }
 
 function draw() {  
+  if(som){    
+    drawName();
+  }else{
+  background(131, 242, 168)
+
+  }
   val = slider.value();   
   image(fondo, 0, 0);
   camino();
@@ -54,7 +61,7 @@ function draw() {
   fill(255,255,255);
   rect(308,232,30,15)
   fill(0,0,0);
-  text(val+'🎓',310,243);
+  text(val,310,243);
   console.log('val: ', val,' e: ', e);
   if(e!=val){
     push();
@@ -66,8 +73,10 @@ function draw() {
   if (bolAux){
     if(val==100){
       muñequitofin(val,muñequito100);
+      som=true
     }else{
-  muñequitor(val,muñequito);}}
+      som=false
+      muñequitor(val,muñequito);}}
 
 }
 async function caminar(ant,des){
@@ -158,7 +167,16 @@ function calcularY(x){
     y=((x-293)*Math.sin(a))/Math.sin((Math.PI/2)-a)
     return 84-y
   }
-  return 54;
-  
+  return 54;  
 }
 
+function drawName() {
+  push();
+  background(100);
+  textSize(30);
+  var name = '🎓';
+  for (var i=0; i < 30; i++) {
+    fill(random(255));
+    text(name, random(width), random(height));
+  }
+pop();}
