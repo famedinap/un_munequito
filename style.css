@@ -1,8 +1,15 @@
 html, body {
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
-canvas {
-  display: block;
+
+.script{
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  width: 360px;
+  height: 280px;
+  position: relative;
+  left: 25%;
 }

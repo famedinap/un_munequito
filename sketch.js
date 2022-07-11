@@ -21,16 +21,16 @@ function setup() {
   muñequito100 = loadImage('1001.gif');
   Caminando = loadImage('Caminar.gif');
   CaminandoA = loadImage('CaminarA.gif');
-  slider = createSlider(0, 100, val)
-  slider.position(5, 230);
-  slider.style('width', '300px');
+  //slider = createSlider(0, 100, val)
+  //slider.position(5, 230);
+  //slider.style('width', '300px');
 
   inp = createInput(str(val));
-  inp.position(0, 0);
+  inp.position(8, 8);
   inp.size(100);
   
   button = createButton("GO");
-  button.position(100, 0);
+  button.position(108, 8);
   button.mousePressed(myInputEvent);
 
 }
@@ -40,7 +40,7 @@ function keyPressed() {
 }
 function myInputEvent() {
   if(parseFloat(inp.value())>=0 && parseFloat(inp.value())<=100){
-    slider.value(parseFloat(inp.value())) 
+    //slider.value(parseFloat(inp.value())) 
     //console.log('you are typing: ', inp.value(),' val:', val,' float: ',parseFloat(inp.value()));
     val=parseFloat(inp.value())
     mnsg=''
@@ -62,15 +62,21 @@ function draw() {
   background(131, 242, 168)
 
   }
-  val = slider.value();   
+  //val = slider.value();   
   image(fondo, 0, 0);
   camino();
   mensaje();
   noStroke();
   fill(255,255,255);
   rect(308,232,30,15)
-  fill(0,0,0);
-  text(val,310,243);
+  stroke(0);
+  fill(194, 194, 194);
+  rect(25,230,300,20,20,20,20,20)
+  noStroke();
+  fill(237, 213, 0);
+  rect(26,231,((300*val/100)-1),18,20,20,20,20)
+  fill(0,0,0);  
+  text(val,155,243);
   console.log('val: ', val,' e: ', e);
   if(e!=val){
     push();
