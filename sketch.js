@@ -28,10 +28,15 @@ function setup() {
   inp = createInput(str(val));
   inp.position(0, 0);
   inp.size(100);
+  
   button = createButton("GO");
   button.position(100, 0);
   button.mousePressed(myInputEvent);
 
+}
+function keyPressed() {
+  if (keyCode === ENTER) {
+    myInputEvent();}
 }
 function myInputEvent() {
   if(parseFloat(inp.value())>=0 && parseFloat(inp.value())<=100){
