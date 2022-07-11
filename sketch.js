@@ -3,6 +3,8 @@ let fondo;
 let slider;
 let muñequito;
 let muñequito100;
+let Caminando;
+let CaminandoA;
 let val=0
 let e=0
 let inp
@@ -17,6 +19,8 @@ function setup() {
   fondo = loadImage('fondo.jpg');
   muñequito = loadImage('muñequito.png');
   muñequito100 = loadImage('1001.gif');
+  Caminando = loadImage('Caminar.gif');
+  CaminandoA = loadImage('CaminarA.gif');
   slider = createSlider(0, 100, val)
   slider.position(5, 230);
   slider.style('width', '300px');
@@ -73,9 +77,11 @@ function draw() {
   if (bolAux){
     if(val==100){
       muñequitofin(val,muñequito100);
+      mnsg='Felicitaciones!!!!!';
       som=true
     }else{
       som=false
+      mnsg='';
       muñequitor(val,muñequito);}}
 
 }
@@ -84,13 +90,13 @@ async function caminar(ant,des){
   if(des>ant){
   for (let i = ant; i < des+1; i++){
     console.log('ant: ', ant,' des: ', des,' i: ', i,' y ',1);
-    muñequitor(i,muñequito);
-    await sleep(30)
+    muñequitor(i,Caminando);
+    await sleep(35)
   }}
   else{
     for (let j = ant; j > des-1; j--){
       console.log('ant: ', ant,' des: ', des,' j: ', j,' y ',2);
-      muñequitor(j,muñequito);
+      muñequitor(j,CaminandoA);
       await sleep(30)
     }}
   bolAux=true
