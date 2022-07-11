@@ -86,7 +86,7 @@ function draw() {
       som=true
     }else{
       som=false
-      mnsg='';
+      
       muñequitor(val,muñequito);}}
 
 }
